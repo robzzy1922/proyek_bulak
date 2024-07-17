@@ -16,37 +16,6 @@ Proyek ini adalah sebuah website untuk desa yang menyediakan informasi dan layan
 - **Backend:** PHP
 - **Database:** MySQL
 
-## Instalasi
-
-1. Clone repository:
-    ```bash
-    git clone https://github.com/username/repository.git
-    ```
-2. Masuk ke direktori proyek:
-    ```bash
-    cd repository
-    ```
-3. Install dependencies:
-    ```bash
-    composer install
-    ```
-4. Salin `.env.example` menjadi `.env` dan atur konfigurasi database:
-    ```bash
-    cp .env.example .env
-    ```
-5. Generate aplikasi key:
-    ```bash
-    php artisan key:generate
-    ```
-6. Jalankan migrasi database:
-    ```bash
-    php artisan migrate
-    ```
-7. Jalankan server lokal:
-    ```bash
-    php artisan serve
-    ```
-
 ## Kontribusi
 
 1. Fork repository ini
@@ -61,4 +30,4 @@ Proyek ini dilisensikan di bawah lisensi MIT. Lihat file [LICENSE](LICENSE) untu
 
 ## Kontak
 
-Jika ada pertanyaan atau saran, hubungi [email@example.com](mailto:email@example.com).
+Jika ada pertanyaan atau saran, hubungi [robipermanaofficial@gmail.com](mailto:robipermanaofficial@gmail.com).
