@@ -1,3 +1,7 @@
+<?php
+require 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +13,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    .map-section>#map {
+        border: 2px solid #007bff !important;
+        border-radius: 5px !important;
+        height: 400px !important;
+    }
+    </style>
 </head>
 
 <body>
+    <!-- top info -->
     <div class="top-bar">
         <a href="tel:0226623181">022-6623181</a> |
         <a href="mailto:pemdes@kertamulya-padalarang.desa.id">pemdes@jatibarang.desa.id</a> |
         <span>Kabupaten Indramayu</span>
     </div>
+    <!-- end top info -->
 
+    <!-- navbar -->
     <header>
         <div class="container d-flex justify-content-between align-items-center ">
             <div class="logo d-flex ">
@@ -39,21 +53,10 @@
                                 <li><a class="dropdown-item" href="#">Tentang Kami</a></li>
                                 <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
                                 <li><a class="dropdown-item" href="#">Sejarah Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Geografis Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Demografi Desa</a></li>
+
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#transparansi" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Transparansi
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">APBDesa</a></li>
-                                <li><a class="dropdown-item" href="#">Perencanaan Pembangunan</a></li>
-                                <li><a class="dropdown-item" href="#">Pembangunan Desa</a></li>
-                            </ul>
-                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#pemerintahan" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,13 +82,20 @@
                                 <li><a class="dropdown-item" href="#">Produk Hukum</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#potensi">Potensi Desa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#produk">Produk Desa</a></li>
+                        <li class="nav-user"><a class="nav-link"
+                                style="color: #ffffff; background-color: #00ba88; border-radius: 5px; margin-right: 10px; font-weight: normal;"
+                                href="#potensi">Layanan
+                                Mandiri</a></li>
+                        <li class="nav-admin"><a class="nav-link"
+                                style="color: #ffffff; background-color: #007bff; border-radius: 5px; font-weight: normal;"
+                                href="#produk">Login Admin</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
+    <!-- end navbar -->
 
     <!-- crousel -->
     <div id="carouselExample" class="carousel slide">
@@ -117,33 +127,28 @@
         <div class="row">
             <div class="head-news col-md-8">
                 <h2><a href="#">Berita <span>Terkini</span></a></h2>
-                <div class="news-item">
-                    <img src="img-artikel/HOK-2.jpg" alt="News 1">
-                    <div class="news-content">
-                        <h3>HOK mulai gencar untuk promosi</h3>
-                        <p>Mar 17, 2024</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, maxime.... <a
-                                href="#">Selengkapnya</a></p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="img-artikel/HOK-2.jpg" alt="News 2">
-                    <div class="news-content">
-                        <h3>Moonton ketar ketir sob</h3>
-                        <p>Feb 10, 2024</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, facere. <a
-                                href="#">Selengkapnya</a></p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="img-artikel/HOK-2.jpg" alt="News 3">
-                    <div class="news-content">
-                        <h3>Event baru PUBG Mobile</h3>
-                        <p>Feb 05, 2024</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, et?<a
-                                href="#">Selengkapnya</a></p>
-                    </div>
-                </div>
+                <?php
+                $sql = "SELECT judul, created_at, konten, image FROM artikel ORDER BY created_at DESC LIMIT 4";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="news-item">';
+                        echo '<img src="uploads/' . $row["image"] . '" alt="News">';
+                        echo '<div class="news-content">';
+                        echo '<h3>' . $row["judul"] . '</h3>';
+                        echo '<p>' . date('d F Y', strtotime($row["created_at"]))  . '</p>';
+                        echo '<p>' . substr($row["konten"], 0, 50 ) . '... <a href="#">Selengkapnya</a></p>';
+                        echo '<p>oleh: administrator</p>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "0 results";
+                }
+
+                mysqli_close($conn);
+                ?>
             </div>
             <div class="col-md-4">
                 <h2><a href="#">Pengumuman</a></h2>
@@ -175,6 +180,20 @@
     </section>
     <!-- end Berita Terkini dan Pengumuman -->
 
+    <!-- Map Section -->
+    <section class="map-section container mt-5">
+        <h2>Lokasi Desa Bulak</h2>
+        <div id="mapp">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40215.0512254856!2d108.29484755523632!3d-6.449452914454293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ec6e0217cc78f%3A0x401e8f1fc28cf70!2sJatibarang%2C%20Kec.%20Jatibarang%2C%20Kabupaten%20Indramayu%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1721282631653!5m2!1sid!2sid"
+                width="100%" height="400" style="border: 2px solid #007bff; border-radius: 5px;" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+    </section>
+    <!-- end Map Section -->
+
+    <!-- Footer -->
     <footer class="footer mt-5 py-5">
         <div class="container">
             <div class="row">
@@ -212,10 +231,11 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <p>2020-2024 © Kementerian Komunikasi dan Informatika RI.</p>
+                <p>2024 © Rekayasa Perangkat Lunak POLINDRA.</p>
             </div>
         </div>
     </footer>
+    <!-- end footer -->
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

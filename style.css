@@ -72,11 +72,10 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #007bff;
+  background-color: #00b16d;
   border-radius: 5px;
 }
-
-nav ul li ul {
+#007bff nav ul li ul {
   display: none;
   position: absolute;
   top: 100%;
