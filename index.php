@@ -9,17 +9,10 @@ require 'koneksi.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Bulak</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-    .map-section>#map {
-        border: 2px solid #007bff !important;
-        border-radius: 5px !important;
-        height: 400px !important;
-    }
-    </style>
 </head>
 
 <body>
@@ -128,7 +121,7 @@ require 'koneksi.php';
             <div class="head-news col-md-8">
                 <h2><a href="#">Berita <span>Terkini</span></a></h2>
                 <?php
-                $sql = "SELECT judul, created_at, konten, image FROM artikel ORDER BY created_at DESC LIMIT 4";
+                $sql = "SELECT id, judul, created_at, konten, image FROM artikel ORDER BY created_at DESC LIMIT 4";
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -136,9 +129,9 @@ require 'koneksi.php';
                         echo '<div class="news-item">';
                         echo '<img src="uploads/' . $row["image"] . '" alt="News">';
                         echo '<div class="news-content">';
-                        echo '<h3>' . $row["judul"] . '</h3>';
+                        echo '<h3> <a href="artikel.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
                         echo '<p>' . date('d F Y', strtotime($row["created_at"]))  . '</p>';
-                        echo '<p>' . substr($row["konten"], 0, 50 ) . '... <a href="#">Selengkapnya</a></p>';
+                        echo '<p>' . substr($row["konten"], 0, 50 ) . '... <a href="artikel.php?id=' . $row["id"] . '">Selengkapnya</a></p>';
                         echo '<p>oleh: administrator</p>';
                         echo '</div>';
                         echo '</div>';
