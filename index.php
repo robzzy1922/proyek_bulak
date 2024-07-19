@@ -9,7 +9,7 @@ require 'koneksi.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Bulak</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -119,7 +119,7 @@ require 'koneksi.php';
     <section class="news-announcements container mt-5">
         <div class="row">
             <div class="head-news col-md-8">
-                <h2><a href="#">Berita <span>Terkini</span></a></h2>
+                <h2><a href="berita_desa.php">Berita <span>Terkini</span></a></h2>
                 <?php
                 $sql = "SELECT id, judul, created_at, konten, image FROM artikel ORDER BY created_at DESC LIMIT 4";
                 $result = mysqli_query($conn, $sql);
