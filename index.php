@@ -13,6 +13,7 @@ require 'koneksi.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,9 @@ require 'koneksi.php';
     <header>
         <div class="container d-flex justify-content-between align-items-center ">
             <div class="logo d-flex ">
-                <img src="img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                <a href="index.php">
+                    <img src="img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
                     <span>Kabupaten Indramayu</span>
@@ -43,9 +46,9 @@ require 'koneksi.php';
                                 Profil Desa
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Tentang Kami</a></li>
-                                <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
-                                <li><a class="dropdown-item" href="#">Sejarah Desa</a></li>
+                                <li><a class="dropdown-item" href="tentang_kami.php">Tentang Kami</a></li>
+                                <li><a class="dropdown-item" href="visi_misi.php">Visi & Misi</a></li>
+                                <li><a class="dropdown-item" href="sejarah.php">Sejarah Desa</a></li>
 
                             </ul>
                         </li>
@@ -56,9 +59,9 @@ require 'koneksi.php';
                                 Pemerintahan
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-                                <li><a class="dropdown-item" href="#">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Lembaga Desa</a></li>
+                                <li><a class="dropdown-item" href="struktur.php">Struktur Organisasi</a></li>
+                                <li><a class="dropdown-item" href="perangkat_desa.php">Perangkat Desa</a></li>
+                                <li><a class="dropdown-item" href="lembaga.php">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -67,12 +70,12 @@ require 'koneksi.php';
                                 Informasi Publik
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Berita Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="#">Agenda Kegiatan</a></li>
-                                <li><a class="dropdown-item" href="#">Galeri</a></li>
-                                <li><a class="dropdown-item" href="#">Download</a></li>
-                                <li><a class="dropdown-item" href="#">Produk Hukum</a></li>
+                                <li><a class="dropdown-item" href="berita_desa.php">Berita Desa</a></li>
+                                <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
+                                <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
+                                <li><a class="dropdown-item" href="download.php">Download</a></li>
+                                <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
                             </ul>
                         </li>
                         <li class="nav-user"><a class="nav-link"
@@ -174,17 +177,46 @@ require 'koneksi.php';
     <!-- end Berita Terkini dan Pengumuman -->
 
     <!-- Map Section -->
-    <section class="map-section container mt-5">
-        <h2>Lokasi Desa Bulak</h2>
-        <div id="mapp">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40215.0512254856!2d108.29484755523632!3d-6.449452914454293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ec6e0217cc78f%3A0x401e8f1fc28cf70!2sJatibarang%2C%20Kec.%20Jatibarang%2C%20Kabupaten%20Indramayu%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1721282631653!5m2!1sid!2sid"
-                width="100%" height="400" style="border: 2px solid #007bff; border-radius: 5px;" allowfullscreen=""
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-        </div>
-    </section>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ebebeb" fill-opacity="1" d="M0,224L1440,160L1440,320L0,320Z"></path>
+    </svg>
+    <div class="map-all">
+        <section class="map-section container mt-5">
+            <h2>Lokasi Desa Bulak</h2>
+            <div id="mapp">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40215.0512254856!2d108.29484755523632!3d-6.449452914454293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ec6e0217cc78f%3A0x401e8f1fc28cf70!2sJatibarang%2C%20Kec.%20Jatibarang%2C%20Kabupaten%20Indramayu%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1721282631653!5m2!1sid!2sid"
+                    width="100%" height="400" style="border: 2px solid #007bff; border-radius: 5px;" allowfullscreen=""
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </div>
+    <svg class="secsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ebebeb" fill-opacity="1" d="M0,224L1440,160L1440,0L0,0Z"></path>
+    </svg>
     <!-- end Map Section -->
+
+    <!-- kritik dan saran -->
+    <section class="feedback-section container mt-5">
+        <h2>Kritik dan Saran</h2>
+        <form id="feedbackForm" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Pesan</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
+        <div id="feedbackMessage"></div>
+    </section>
+    <!-- end kritik dan saran -->
 
     <!-- Footer -->
     <footer class="footer mt-5 py-5">
@@ -230,10 +262,26 @@ require 'koneksi.php';
     </footer>
     <!-- end footer -->
 
+    <script>
+    $(document).ready(function() {
+        $('#feedbackForm').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'send_feedback.php',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#feedbackMessage').html(response);
+                }
+            });
+        });
+    });
+    </script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

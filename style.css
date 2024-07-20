@@ -1,43 +1,4 @@
-Skip
-  to
-  content
-  Navigation
-  Menu
-  robzzy1922
-  /
-  proyek_bulak
-  Type
-  /
-  to
-  search
-  Code
-  Issues
-  Pull
-  requests
-  Actions
-  Projects
-  Wiki
-  Security
-  Insights
-  Settings
-  Breadcrumbsproyek_bulak
-  /styles.css
-  Latest
-  commit
-  History
-  File
-  metadata
-  and
-  controls
-  Code
-  Blame
-  250
-  lines
-  (208 loc)
-  ·
-  4.29
-  KB
-  body {
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -246,6 +207,35 @@ nav ul li ul li {
   margin: 0;
 }
 
+.map-all {
+  background-color: #ebebeb;
+  margin: 0px;
+  padding: 20px 0px; /* Add padding for better spacing */
+}
+
+.map-section {
+  text-align: center; /* Center the content */
+}
+
+.map-section h2 {
+  color: #007bff; /* Match the theme color */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+.map-section iframe {
+  border: 2px solid #007bff; /* Match the border color */
+  border-radius: 5px;
+  width: 100%;
+  height: 400px;
+}
+
+.secsvg {
+  width: 100%;
+  border-radius: 0; /* Remove rounded corners */
+  padding: 0; /* Remove padding */
+  margin-bottom: -50px;
+}
+
 /* Footer styles */
 .footer {
   background-color: #007bff;
@@ -286,4 +276,35 @@ nav ul li ul li {
 
 .footer .list-unstyled li {
   margin-bottom: 10px;
+}
+
+/* Kritik dan Saran */
+.feedback-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section h2 {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.feedback-section .form-label {
+  font-weight: bold;
+}
+
+.feedback-section .form-control {
+  border-radius: 5px;
+}
+
+.feedback-section .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.feedback-section .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }

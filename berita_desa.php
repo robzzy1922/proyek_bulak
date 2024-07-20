@@ -24,11 +24,14 @@
     </div>
     <!-- end top info -->
 
+
     <!-- navbar -->
     <header>
         <div class="container d-flex justify-content-between align-items-center ">
             <div class="logo d-flex ">
-                <img src="img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                <a href="index.php">
+                    <img src="img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
                     <span>Kabupaten Indramayu</span>
@@ -43,9 +46,9 @@
                                 Profil Desa
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Tentang Kami</a></li>
-                                <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
-                                <li><a class="dropdown-item" href="#">Sejarah Desa</a></li>
+                                <li><a class="dropdown-item" href="tentang_kami.php">Tentang Kami</a></li>
+                                <li><a class="dropdown-item" href="visi_misi.php">Visi & Misi</a></li>
+                                <li><a class="dropdown-item" href="sejarah.php">Sejarah Desa</a></li>
 
                             </ul>
                         </li>
@@ -56,9 +59,9 @@
                                 Pemerintahan
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-                                <li><a class="dropdown-item" href="#">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Lembaga Desa</a></li>
+                                <li><a class="dropdown-item" href="struktur.php">Struktur Organisasi</a></li>
+                                <li><a class="dropdown-item" href="perangkat_desa.php">Perangkat Desa</a></li>
+                                <li><a class="dropdown-item" href="lembaga.php">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -67,12 +70,12 @@
                                 Informasi Publik
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Berita Desa</a></li>
-                                <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="#">Agenda Kegiatan</a></li>
-                                <li><a class="dropdown-item" href="#">Galeri</a></li>
-                                <li><a class="dropdown-item" href="#">Download</a></li>
-                                <li><a class="dropdown-item" href="#">Produk Hukum</a></li>
+                                <li><a class="dropdown-item" href="berita_desa.php">Berita Desa</a></li>
+                                <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
+                                <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
+                                <li><a class="dropdown-item" href="download.php">Download</a></li>
+                                <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
                             </ul>
                         </li>
                         <li class="nav-user"><a class="nav-link"
