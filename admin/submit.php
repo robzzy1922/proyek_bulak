@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $image = $_FILES['image']['name'];
-    $target = "uploads/" . basename($image);
+    $target = "../admin/uploads/" . basename($image);
 
     // Ensure the uploads directory exists
     if (!is_dir('uploads')) {

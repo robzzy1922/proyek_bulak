@@ -134,12 +134,12 @@
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo '<article class="mb-4 d-flex">';
-                        echo '<img src="uploads/' . $row["image"] . '" class="img-fluid me-3" alt="News Image" style="width: 150px; height: auto;">';
+                        echo '<img src="admin/uploads/' . $row["image"] . '" class="img-fluid me-3" alt="News Image" style="width: 150px; height: 190px;">';
                         echo '<div>';
                         echo '<h3> <a href="artikel.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
                         echo '<p><i class="fas fa-calendar-alt"></i> ' . date('d F Y', strtotime($row["created_at"])) . ' <i class="fas fa-user"></i> Administrator</p>';
                         echo '<p>' . substr($row["konten"], 0, 50) . '...</p>';
-                        echo '<a href="berita_detail.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
+                        echo '<a href="artikel.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
                         echo '</div>';
                         echo '</article>';
                     }

@@ -83,10 +83,17 @@ nav ul li ul {
   background-color: white;
   border: 1px solid #ccc;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 nav ul li:hover ul {
   display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 nav ul li ul li {
@@ -98,6 +105,7 @@ nav ul li ul li {
   color: #007bff; /* Change to your desired color */
   font-weight: bold;
   margin: 0 10px;
+  transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
@@ -105,10 +113,31 @@ nav ul li ul li {
   background-color: #007bff; /* Change to your desired hover color */
 }
 
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+  color: white; /* Change to white when active or hovered */
+  background-color: #007bff; /* Blue background when active or hovered */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
 .navbar-nav .dropdown-menu {
-  z-index: 1050; /* Ensure dropdown is above carousel */
-  background-color: #f8f9fa; /* Change to your desired background color */
-  position: absolute; /* Ensure proper positioning */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.navbar-nav .dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.navbar-nav .dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .navbar-nav .dropdown-item {
@@ -366,4 +395,12 @@ nav ul li ul li {
 .latest-news p {
   font-size: 0.8rem; /* Perkecil ukuran font */
   margin: 0; /* Hilangkan margin */
+}
+
+.navbar {
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Warna latar belakang saat digulir */
 }
