@@ -1,5 +1,27 @@
 <?php
- require 'koneksi.php'
+ require 'koneksi.php';
+
+ // Define the number of results per page
+ $results_per_page = 5;
+
+ // Find out the number of results stored in database
+ $sql = "SELECT COUNT(id) AS total FROM artikel";
+ $result = mysqli_query($conn, $sql);
+ $row = mysqli_fetch_assoc($result);
+ $total_results = $row['total'];
+
+ // Determine number of total pages available
+ $total_pages = ceil($total_results / $results_per_page);
+
+ // Determine which page number visitor is currently on
+ $page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+ // Determine the SQL LIMIT starting number for the results on the displaying page
+ $starting_limit = ($page - 1) * $results_per_page;
+
+ // Retrieve selected results from database and display them on page
+ $sql = "SELECT id, judul, created_at, konten, image FROM artikel ORDER BY created_at DESC LIMIT $starting_limit, $results_per_page";
+ $result = mysqli_query($conn, $sql);
  ?>
 
 <!DOCTYPE html>
@@ -109,9 +131,6 @@
             <section class="news-list col-md-8">
                 <h2>Berita</h2>
                 <?php
-                $sql = "SELECT id, judul, created_at, konten, image FROM artikel ORDER BY created_at DESC";
-                $result = mysqli_query($conn, $sql);
-
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo '<article class="mb-4 d-flex">';
@@ -119,7 +138,7 @@
                         echo '<div>';
                         echo '<h3> <a href="artikel.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
                         echo '<p><i class="fas fa-calendar-alt"></i> ' . date('d F Y', strtotime($row["created_at"])) . ' <i class="fas fa-user"></i> Administrator</p>';
-                        echo '<p>' . substr($row["konten"], 0, 100) . '...</p>';
+                        echo '<p>' . substr($row["konten"], 0, 50) . '...</p>';
                         echo '<a href="berita_detail.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
                         echo '</div>';
                         echo '</article>';
@@ -128,8 +147,43 @@
                     echo "<p>No news found.</p>";
                 }
                 ?>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <?php
+                        for ($page = 1; $page <= $total_pages; $page++) {
+                            echo '<li class="page-item"><a class="page-link" href="berita_desa.php?page=' . $page . '">' . $page . '</a></li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </section>
             <!-- end berita -->
+
+            <!-- berita terakhir -->
+            <aside class="last_all col-md-4">
+                <h4>Berita Terakhir</h4>
+                <?php
+                $sql_latest = "SELECT id, judul, created_at, image FROM artikel ORDER BY created_at DESC LIMIT 5";
+                $result_latest = mysqli_query($conn, $sql_latest);
+
+                if (mysqli_num_rows($result_latest) > 0) {
+                    while($row_latest = mysqli_fetch_assoc($result_latest)) {
+                        echo '<div class="latest-news mb-3 d-flex">';
+                        echo '<img src="uploads/' . $row_latest["image"] . '" class="img-fluid me-2" alt="News Image" style="width: 50px; height: 50px;">';
+                        echo '<div>';
+                        echo '<h5 style="font-size: 1rem;"> <a href="artikel.php?id=' . $row_latest["id"] . '" style="text-decoration: none;">' . $row_latest["judul"] . '</a></h5>';
+                        echo '<p><i class="fas fa-calendar-alt"></i> ' . date('M d, Y', strtotime($row_latest["created_at"])) . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo "<p>No latest news found.</p>";
+                }
+                ?>
+            </aside>
+            <!-- end berita terakhir -->
         </div>
     </main>
 

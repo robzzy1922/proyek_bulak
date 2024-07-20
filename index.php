@@ -1,5 +1,23 @@
 <?php
 require 'koneksi.php';
+
+// Handle feedback form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $to = "admin@example.com"; // Ganti dengan email admin
+    $subject = "Kritik dan Saran dari $name";
+    $body = "Nama: $name\nEmail: $email\n\nPesan:\n$message";
+    $headers = "From: $email";
+
+    if (mail($to, $subject, $body, $headers)) {
+        $feedbackMessage = "<p class='text-success'>Pesan berhasil dikirim.</p>";
+    } else {
+        $feedbackMessage = "Pesan gagal dikirim.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +35,10 @@ require 'koneksi.php';
 </head>
 
 <body>
+    <!-- loader -->
+    <div class="loader" id="loader"></div>
+    <!-- end loader -->
+
     <!-- top info -->
     <div class="top-bar">
         <a href="tel:0226623181">022-6623181</a> |
@@ -214,7 +236,13 @@ require 'koneksi.php';
             </div>
             <button type="submit" class="btn btn-primary">Kirim</button>
         </form>
-        <div id="feedbackMessage"></div>
+        <div id="feedbackMessage">
+            <?php
+            if (isset($feedbackMessage)) {
+                echo $feedbackMessage;
+            }
+            ?>
+        </div>
     </section>
     <!-- end kritik dan saran -->
 
@@ -262,26 +290,11 @@ require 'koneksi.php';
     </footer>
     <!-- end footer -->
 
-    <script>
-    $(document).ready(function() {
-        $('#feedbackForm').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: 'send_feedback.php',
-                data: $(this).serialize(),
-                success: function(response) {
-                    $('#feedbackMessage').html(response);
-                }
-            });
-        });
-    });
-    </script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 
 </html>

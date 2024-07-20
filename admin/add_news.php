@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin
+    <title>tambah berita
     </title>
 </head>
 
 <body>
-    <form action="submit.php" method="post" enctype="multipart/form-data">
+    <form action="../admin/submit.php" method="post" enctype="multipart/form-data">
         <label for="title">Judul:</label>
         <input type="text" id="title" name="title" required><br><br>
 

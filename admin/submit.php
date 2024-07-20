@@ -1,5 +1,5 @@
 <?php
-require 'koneksi.php';
+require '../koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
             $sql = "INSERT INTO artikel (judul, konten, image) VALUES ('$title', '$content', '$image')";
             if (mysqli_query($conn, $sql)) {
-                header("Location: index.php");
+                header("Location: ../index.php");
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }

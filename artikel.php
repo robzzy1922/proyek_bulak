@@ -38,16 +38,32 @@ mysqli_close($conn);
         </div>
     </header>
     <div class="container mt-5">
+        <!-- Breadcrumb start -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="berita_desa.php">Articles</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $title; ?></li>
+            </ol>
+        </nav>
+        <!-- Breadcrumb end -->
+
+        <!-- isi artikel -->
         <div class="news-content">
             <img src="uploads/<?php echo $image; ?>" alt="<?php echo $title; ?>" class="img-fluid">
             <?php echo $content; ?>
         </div>
     </div>
+    <!-- end isi artikel -->
+
+    <!-- footer -->
     <footer class="footer mt-5">
         <div class="container">
             <p>&copy; 2023 Your Website</p>
         </div>
     </footer>
+    <!-- end footer -->
+
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

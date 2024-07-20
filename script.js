@@ -9,3 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Show loader on form submit
+document.getElementById("feedbackForm").addEventListener("submit", function () {
+  document.getElementById("loader").style.display = "block";
+});
+
+// Hide loader after page load
+window.addEventListener("load", function () {
+  document.getElementById("loader").style.display = "none";
+});
