@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
       header.classList.remove("sticky");
     }
   });
+
+  const commentsContainer = document.querySelector(".comments-container");
+  const comments = document.querySelector(".comments");
+  const commentHeight = comments.scrollHeight;
+  const containerHeight = commentsContainer.clientHeight;
+
+  if (commentHeight > containerHeight) {
+    comments.style.animationDuration = `${commentHeight / 50}s`; // Adjust speed as needed
+  }
 });
 
 // Show loader on form submit

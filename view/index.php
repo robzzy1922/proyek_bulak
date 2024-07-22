@@ -1,5 +1,5 @@
 <?php
-require 'koneksi.php';
+require '../function/koneksi.php';
 
 // Handle feedback form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: $email";
 
     if (mail($to, $subject, $body, $headers)) {
-        $feedbackMessage = "<p class='text-success'>Pesan berhasil dikirim.</p>";
+        $feedbackMessage = "<br><p class='text-success'>Pesan berhasil dikirim.</p>";
     } else {
-        $feedbackMessage = "Pesan gagal dikirim.";
+        $feedbackMessage = "<br><p class='text-warning'>Pesan gagal dikirim.</p>";
     }
 }
 ?>
@@ -28,11 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Bulak</title>
     <link rel="icon" href="img-crousel/logo.jpg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -50,17 +50,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- navbar -->
     <header>
-        <div class="container d-flex justify-content-between align-items-center ">
-            <div class="logo d-flex ">
-                <a href="index.php">
-                    <img src="img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+        <div class="container d-flex justify-content-between align-items-center flex-wrap">
+            <div class="logo d-flex align-items-center mb-3 mb-lg-0">
+                <a href="../view/index.php">
+                    <img src="../img-crousel/logo.jpg" alt="Logo Desa Bulak"> <!-- Replace with your logo -->
                 </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
                     <span>Kabupaten Indramayu</span>
                 </div>
             </div>
-            <nav class=" navbar navbar-expand-lg navbar-light ">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -69,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 Profil Desa
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="tentang_kami.php">Tentang Kami</a></li>
+
                                 <li><a class="dropdown-item" href="visi_misi.php">Visi & Misi</a></li>
                                 <li><a class="dropdown-item" href="sejarah.php">Sejarah Desa</a></li>
 
@@ -120,13 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img-crousel/xoss.jpg" class="d-block w-100" alt="...">
+                <img src="../img-crousel/xoss.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="img-crousel/xosss.jpg" class="d-block w-100" alt="...">
+                <img src="../img-crousel/xosss.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="img-crousel/xosss.webp" class="d-block w-100" alt="...">
+                <img src="../img-crousel/xosss.webp" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -138,8 +142,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
     <!-- end crousel -->
 
+    <!-- marque -->
+    <div class="marquee">
+        <p>MARI KITA WUJUDKAN DESA BULAK YANG BERADAB (BERSIH, RAMAH, DAMAI, DAN BERSATU)</p>
+    </div>
+    <!-- end marque -->
 
     <!-- Berita Terkini dan Pengumuman -->
     <section class="news-announcements container mt-5">
@@ -153,11 +163,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="news-item">';
-                        echo '<img src="admin/uploads/' . $row["image"] . '" alt="News">';
+                        echo '<img src="../admin/uploads/' . $row["image"] . '" alt="News">';
                         echo '<div class="news-content">';
-                        echo '<h3> <a href="artikel.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
+                        echo '<h3> <a href="../view/artikel.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
                         echo '<p>' . date('d F Y', strtotime($row["created_at"]))  . '</p>';
-                        echo '<p>' . substr($row["konten"], 0, 50 ) . '... <a href="artikel.php?id=' . $row["id"] . '">Selengkapnya</a></p>';
+                        echo '<p>' . substr($row["konten"], 0, 50 ) . '... <a href="../view/artikel.php?id=' . $row["id"] . '">Selengkapnya</a></p>';
                         echo '<p>oleh: administrator</p>';
                         echo '</div>';
                         echo '</div>';
@@ -165,17 +175,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     echo "0 results";
                 }
-
-                mysqli_close($conn);
                 ?>
             </div>
+            <!-- pengumuman -->
             <div class="col-md-4">
                 <h2><a href="#">Pengumuman</a></h2>
                 <ul class="announcements-list">
-                    <li><a href="#">Vaksin Booster Ke-2</a></li>
-                    <li><a href="#">Pendaftaran Kartu Prakerja</a></li>
-                    <li><a href="#">Seleksi Pengurus BUMDes</a></li>
+                    <?php
+                    $sql = "SELECT id, judul FROM pengumuman ORDER BY created_at DESC LIMIT 3";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo '<li><a href="../view/pengumuman.php?id=' . $row["id"] . '">' . $row["judul"] . '</a></li>';
+                        }
+                    } else {
+                        echo "<li>Tidak ada pengumuman</li>";
+                    }
+                    ?>
                 </ul>
+                <!-- end pengumuman -->
+
+                <!-- agenda -->
                 <h2><a href="#">Agenda Kegiatan</a></h2>
                 <ul class="agenda-list">
                     <li>
@@ -195,6 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </li>
                 </ul>
             </div>
+            <!-- end agenda -->
         </div>
     </section>
     <!-- end Berita Terkini dan Pengumuman -->
@@ -222,7 +244,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- kritik dan saran -->
     <section class="feedback-section container mt-5">
         <h2>Kritik dan Saran</h2>
-        <form id="feedbackForm" method="post">
+        <form id="../function/feedbackForm" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -291,7 +313,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </footer>
     <!-- end footer -->
 
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
