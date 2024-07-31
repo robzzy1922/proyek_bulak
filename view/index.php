@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Bulak</title>
-    <link rel="icon" href="img-crousel/logo.jpg">
+    <link rel="icon" href="../desa-img/logo_indra.jpeg">
     <link rel="stylesheet" href="../style/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- top info -->
     <div class="top-bar">
         <a href="tel:0226623181">022-6623181</a> |
-        <a href="mailto:pemdes@kertamulya-padalarang.desa.id">pemdes@jatibarang.desa.id</a> |
+        <a href="mailto:pemdes@jatibarang.desa.id">pemdes@jatibarang.desa.id</a> |
         <span>Kabupaten Indramayu</span>
     </div>
     <!-- end top info -->
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="container d-flex justify-content-between align-items-center flex-wrap">
             <div class="logo d-flex align-items-center mb-3 mb-lg-0">
                 <a href="../view/index.php">
-                    <img src="../img-crousel/logo.jpg" alt="Logo Desa Bulak"> <!-- Replace with your logo -->
+                    <img src="../desa-img/logo_indra.jpeg" alt="Logo Desa Bulak"> <!-- Replace with your logo -->
                 </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="berita_desa.php">Berita Desa</a></li>
                                 <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="agenda_all.php">Agenda Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
                                 <li><a class="dropdown-item" href="download.php">Download</a></li>
                                 <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
@@ -124,13 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../img-crousel/xoss.jpg" class="d-block w-100" alt="...">
+                <img src="../img-crousel/pasar.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../img-crousel/xosss.jpg" class="d-block w-100" alt="...">
+                <img src="../img-crousel/wisata_alun.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="../img-crousel/xosss.webp" class="d-block w-100" alt="...">
+                <img src="../img-crousel/wisata_agungf.jpeg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -140,6 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
+
         </button>
     </div>
 
@@ -179,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <!-- pengumuman -->
             <div class="col-md-4">
-                <h2><a href="#">Pengumuman</a></h2>
+                <h2><a href="../view/pengumuman.php">Pengumuman</a></h2>
                 <ul class="announcements-list">
                     <?php
                     $sql = "SELECT id, judul FROM pengumuman ORDER BY created_at DESC LIMIT 3";
@@ -197,26 +198,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- end pengumuman -->
 
                 <!-- agenda -->
-                <h2><a href="#">Agenda Kegiatan</a></h2>
+                <h2><a href="../view/agenda_all.php">Agenda Kegiatan</a></h2>
                 <ul class="agenda-list">
-                    <li>
-                        <p>Feb 06, 2024</p>
-                        <p>Sosialisasi Penanggulangan Covid 19</p>
-                        <p>Lokasi: Aula Desa</p>
-                    </li>
-                    <li>
-                        <p>Sep 02, 2022</p>
-                        <p>Pemberian Vitamin A & B</p>
-                        <p>Lokasi: Posyandu Cempaka</p>
-                    </li>
-                    <li>
-                        <p>Jul 06, 2020</p>
-                        <p>Musyawarah Desa Pembentukan BUMDes</p>
-                        <p>Lokasi: Aula Desa</p>
-                    </li>
+                    <?php
+                    $sql = "SELECT created_at, judul, lokasi FROM agenda ORDER BY created_at DESC LIMIT 3";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo '<li>';
+                            echo '<p>' . date('M d, Y', strtotime($row["created_at"])) . '</p>';
+                            echo '<p>' . $row["judul"] . '</p>';
+                            echo '<p>Lokasi: ' . $row["lokasi"] . '</p>';
+                            echo '</li>';
+                        }
+                    } else {
+                        echo "<li>Tidak ada agenda kegiatan</li>";
+                    }
+                    ?>
                 </ul>
+                <!-- end agenda -->
             </div>
-            <!-- end agenda -->
         </div>
     </section>
     <!-- end Berita Terkini dan Pengumuman -->

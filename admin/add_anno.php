@@ -1,6 +1,6 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        require '../koneksi.php'; // Pastikan path ke koneksi.php benar
+        require '../function/koneksi.php'; // Pastikan path ke koneksi.php benar
 
         $judul = htmlspecialchars($_POST['judul']);
         $konten = htmlspecialchars($_POST['konten']);

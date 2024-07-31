@@ -1,39 +1,24 @@
 <?php
 require '../function/koneksi.php';
 
-$article_id = isset($_GET['id']) ? intval($_GET['id']) : 1; // Get ID from URL or default to 1
+$announcement_id = isset($_GET['id']) ? intval($_GET['id']) : 1; // Get ID from URL or default to 1
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_name = mysqli_real_escape_string($conn, $_POST['user_name']);
-    $content = mysqli_real_escape_string($conn, $_POST['content']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']); // Add email field
-    $created_at = date('Y-m-d H:i:s');
-
-    $sql_insert = "INSERT INTO komentar (article_id, user_name, content, email, created_at) VALUES ($article_id, '$user_name', '$content', '$email', '$created_at')";
-    mysqli_query($conn, $sql_insert);
-}
-
-$sql = "SELECT judul, konten, image, created_at FROM artikel WHERE id = $article_id";
+$sql = "SELECT judul, image, created_at, konten FROM pengumuman WHERE id = $announcement_id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $title = $row['judul'];
-    $content = $row['konten'];
     $image = $row['image'];
+    $konten = $row['konten'];
     $created_at = $row['created_at'];
   
 } else {
-    echo "No article found.";
+    echo "No announcement found.";
     exit;
 }
 
-// Fetch comments
-$sql_comments = "SELECT user_name, content, email, created_at FROM komentar WHERE article_id = $article_id";
-$comments_result = mysqli_query($conn, $sql_comments);
 
-mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +28,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="icon" href="../desa-img/logo_indra.jpeg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -56,7 +42,7 @@ mysqli_close($conn);
         <div class="container d-flex justify-content-between align-items-center ">
             <div class="logo d-flex ">
                 <a href="../view/index.php">
-                    <img src="../img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                    <img src="../desa-img/logo_indra.jpeg" alt="Logo Desa jatibarang"> <!-- Replace with your logo -->
                 </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
@@ -123,13 +109,13 @@ mysqli_close($conn);
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="berita_desa.php">Berita</a></li>
+                <li class="breadcrumb-item"><a href="pengumuman.php">Pengumuman</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $title; ?></li>
             </ol>
         </nav>
         <!-- Breadcrumb end -->
 
-        <!-- isi artikel -->
+        <!-- isi pengumuman -->
         <div class="article-content break-word">
             <h1 class="text-primary"><?php echo $title; ?></h1><br>
             <div class="meta">
@@ -137,9 +123,9 @@ mysqli_close($conn);
                 <span><i class="fas fa-user"></i>Administrator</span>
             </div><br>
             <img src="<?php echo "../admin/uploads/" . $image; ?>" alt="<?php echo $title; ?>" style="width:400px">
-            <p><?php echo nl2br($content); ?></p>
+            <p><?php echo nl2br($konten); ?></p>
         </div>
-        <!-- end isi artikel -->
+        <!-- end isi pengumuman -->
     </div>
 
 

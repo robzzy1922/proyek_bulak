@@ -1,48 +1,37 @@
 <?php
-require '../function/koneksi.php';
+ require '../function/koneksi.php';
 
-$article_id = isset($_GET['id']) ? intval($_GET['id']) : 1; // Get ID from URL or default to 1
+ // Define the number of results per page
+ $results_per_page = 5;
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_name = mysqli_real_escape_string($conn, $_POST['user_name']);
-    $content = mysqli_real_escape_string($conn, $_POST['content']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']); // Add email field
-    $created_at = date('Y-m-d H:i:s');
+ // Find out the number of results stored in database
+ $sql = "SELECT COUNT(id) AS total FROM agenda";
+ $result = mysqli_query($conn, $sql);
+ $row = mysqli_fetch_assoc($result);
+ $total_results = $row['total'];
 
-    $sql_insert = "INSERT INTO komentar (article_id, user_name, content, email, created_at) VALUES ($article_id, '$user_name', '$content', '$email', '$created_at')";
-    mysqli_query($conn, $sql_insert);
-}
+ // Determine number of total pages available
+ $total_pages = ceil($total_results / $results_per_page);
 
-$sql = "SELECT judul, konten, image, created_at FROM artikel WHERE id = $article_id";
-$result = mysqli_query($conn, $sql);
+ // Determine which page number visitor is currently on
+ $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $title = $row['judul'];
-    $content = $row['konten'];
-    $image = $row['image'];
-    $created_at = $row['created_at'];
-  
-} else {
-    echo "No article found.";
-    exit;
-}
+ // Determine the SQL LIMIT starting number for the results on the displaying page
+ $starting_limit = ($page - 1) * $results_per_page;
 
-// Fetch comments
-$sql_comments = "SELECT user_name, content, email, created_at FROM komentar WHERE article_id = $article_id";
-$comments_result = mysqli_query($conn, $sql_comments);
+ // Retrieve selected results from database and display them on page
+ $sql = "SELECT id, judul, created_at, konten, image FROM agenda ORDER BY created_at DESC LIMIT $starting_limit, $results_per_page";
+ $result = mysqli_query($conn, $sql);
+ ?>
 
-mysqli_close($conn);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="../style/style.css">
+    <title>Agenda Kegiatan</title>
+    <link rel="stylesheet" href="../style/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -50,6 +39,14 @@ mysqli_close($conn);
 </head>
 
 <body>
+
+    <!-- top info -->
+    <div class="top-bar">
+        <a href="tel:0226623181">022-6623181</a> |
+        <a href="mailto:pemdes@kertamulya-padalarang.desa.id">pemdes@jatibarang.desa.id</a> |
+        <span>Kabupaten Indramayu</span>
+    </div>
+    <!-- end top info -->
 
     <!-- navbar -->
     <header>
@@ -118,30 +115,55 @@ mysqli_close($conn);
         </div>
     </header>
     <!-- end navbar -->
-    <div class="container mt-5">
-        <!-- Breadcrumb start -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="berita_desa.php">Berita</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo $title; ?></li>
-            </ol>
-        </nav>
-        <!-- Breadcrumb end -->
 
-        <!-- isi artikel -->
-        <div class="article-content break-word">
-            <h1 class="text-primary"><?php echo $title; ?></h1><br>
-            <div class="meta">
-                <span><i class="fas fa-calendar-alt"></i> <?php echo date('d F Y', strtotime($created_at)); ?></span> |
-                <span><i class="fas fa-user"></i>Administrator</span>
-            </div><br>
-            <img src="<?php echo "../admin/uploads/" . $image; ?>" alt="<?php echo $title; ?>" style="width:400px">
-            <p><?php echo nl2br($content); ?></p>
+
+    <!-- breadcrumb -->
+    <nav aria-label="breadcrumb" class="container mt-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../view/index.php"><i class="fas fa-home"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Agenda Kegiatan</li>
+        </ol>
+    </nav>
+    <!-- end breadcrumb -->
+
+    <!-- agenda -->
+    <main class="container my-5">
+        <div class="row">
+            <section class="agenda-list col-md-8">
+                <h2>Agenda Kegiatan</h2>
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo '<article class="mb-4 d-flex">';
+                        echo '<img src="../admin/uploads/' . $row["image"] . '" class="img-fluid me-3" alt="Agenda Image" style="width: 150px; height: 190px;">';
+                        echo '<div>';
+                        echo '<h3> <a href="../view/agenda_detail.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
+                        echo '<p><i class="fas fa-calendar-alt"></i> ' . date('d F Y', strtotime($row["created_at"])) . ' <i class="fas fa-user"></i> Administrator</p>';
+                        echo '<p>' . substr($row["konten"], 0, 50) . '...</p>';
+                        echo '<a href="../view/isi_agenda.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
+                        echo '</div>';
+                        echo '</article>';
+                    }
+                } else {
+                    echo "<p>No agenda found.</p>";
+                }
+                ?>
+            </section>
+            <!-- end agenda -->
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <?php
+                    for ($page = 1; $page <= $total_pages; $page++) {
+                        echo '<li class="page-item"><a class="page-link" href="agenda_all.php?page=' . $page . '">' . $page . '</a></li>';
+                    }
+                    ?>
+                </ul>
+            </nav>
+
         </div>
-        <!-- end isi artikel -->
-    </div>
-
+    </main>
 
     <!-- Footer -->
     <footer class="footer mt-5 py-5">

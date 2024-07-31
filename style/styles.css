@@ -559,3 +559,8 @@ nav ul li ul li {
     display: block;
   }
 }
+
+.break-word {
+  word-wrap: break-word;
+  word-break: break-word;
+}
