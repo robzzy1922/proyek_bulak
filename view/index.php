@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="berita_desa.php">Berita Desa</a></li>
                                 <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="agenda_all.php">Agenda Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
                                 <li><a class="dropdown-item" href="download.php">Download</a></li>
                                 <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- marque -->
     <div class="marquee">
-        <p>MARI KITA WUJUDKAN DESA BULAK YANG BERADAB (BERSIH, RAMAH, DAMAI, DAN BERSATU)</p>
+        <P>MARI KITA WUJUDKAN DESA BULAK YANG BERSERI (BERSIH, RELEGIUS, SEJAHTERA, RAPI, DAN INDAH)</P>
     </div>
     <!-- end marque -->
 

@@ -32,6 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Kegiatan</title>
     <link rel="stylesheet" href="../style/styles.css">
+    <link rel="icon" href="../desa-img/logo_indra.jpeg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -43,7 +44,7 @@
     <!-- top info -->
     <div class="top-bar">
         <a href="tel:0226623181">022-6623181</a> |
-        <a href="mailto:pemdes@kertamulya-padalarang.desa.id">pemdes@jatibarang.desa.id</a> |
+        <a href="mailto:pemdes@jatibarang.desa.id">pemdes@jatibarang.desa.id</a> |
         <span>Kabupaten Indramayu</span>
     </div>
     <!-- end top info -->
@@ -53,7 +54,7 @@
         <div class="container d-flex justify-content-between align-items-center ">
             <div class="logo d-flex ">
                 <a href="../view/index.php">
-                    <img src="../img-crousel/logo.jpg" alt="Logo Desa Kertamulya"> <!-- Replace with your logo -->
+                    <img src="../desa-img/logo_indra.jpeg" alt="Logo Desa Bulak"> <!-- Replace with your logo -->
                 </a>
                 <div class="ms-3">
                     <span>Desa Bulak</span><br>
@@ -140,7 +141,7 @@
                         echo '<h3> <a href="../view/agenda_detail.php?id=' . $row["id"] . '" style="text-decoration: none;">' . $row["judul"] . '</a></h3>';
                         echo '<p><i class="fas fa-calendar-alt"></i> ' . date('d F Y', strtotime($row["created_at"])) . ' <i class="fas fa-user"></i> Administrator</p>';
                         echo '<p>' . substr($row["konten"], 0, 50) . '...</p>';
-                        echo '<a href="../view/isi_agenda.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
+                        echo '<a href="../view/agenda_detail.php?id=' . $row["id"] . '" class="btn btn-primary">selengkapnya</a>';
                         echo '</div>';
                         echo '</article>';
                     }
@@ -156,7 +157,7 @@
                 <ul class="pagination">
                     <?php
                     for ($page = 1; $page <= $total_pages; $page++) {
-                        echo '<li class="page-item"><a class="page-link" href="agenda_all.php?page=' . $page . '">' . $page . '</a></li>';
+                        echo '<li class="page-item"><a class="page-link" href="agenda.php?page=' . $page . '">' . $page . '</a></li>';
                     }
                     ?>
                 </ul>

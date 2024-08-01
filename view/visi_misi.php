@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visi & Misi Desa</title>
     <link rel="icon" href="../desa-img/logo_indra.jpeg">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -114,32 +114,39 @@
                 </p>
                 <br><br>
 
-                <h5 class="text-secondary"> Apa visi Calon Kepala Desa?</h5>
-                <p class="text-abu mt-3">Kita telah mengetahui pengertian visi dan misi secara umum. Lantas apa itu visi
-                    calon kepala desa? Visi Calon Kepala Desa adalah suatu gambaran atas cita-cita atau impian dari
-                    Calon Kepala Desa yang akan dicapai selama menjabat atau menjadi Kepala Desa yaitu dalam jangka
-                    waktu 6 (enam) tahun periode masa jabatan.
+                <h5 class="text-secondary"> Apa Visi Desa?</h5>
+                <p class="text-abu mt-3">
+                    "Bulak Berseri"<br>
+                    (Bersih, Relegius, Sejahtera, Rapi, dan Indah)
                     <br><br>
-                    Sehingga ketika calon kepala desa ini nantinya terpilih menjadi Kepala Desa, sudah memiliki gambaran
-                    yang jelas mengenai cita-cita dan tujuan dalam masa menjabat, tanpa perlu bingung lagi, sehingga
-                    jalannya pemerintahan dapat berjalan lancar dan sesuai dengan harapan masyarakat.
-                    <br><br>
-                    Pengertian Visi Calon Kepala Desa dalam Permendagri 112 Tahun 2014 (Pasal 28 Ayat 2) adalah
-                    “Keinginan yang ingin diwujudkan dalam jangka waktu masa jabatan Kepala Desa”.
+                    "Terwujudnya masyarakat Desa Bulak yang Bersih, Relegius, Sejahtera, Rapi dan Indah melalui
+                    Akselerasi Pembangunan yang berbasis Keagamaan, Budaya Hukum dan Berwawasan Lingkungan dengan
+                    berorentasi pada peningkatan Kinerja Aparatur dan Pemberdayaan Masyarakat"
                 </p>
                 <br><br>
 
-                <h5 class="text-secondary"> Apa misi Calon Kepala Desa?</h5>
-                <p class="text-abu mt-3">Seperti telah disebutkan sebelumnya, secara umum misi ada karena telah adanya
-                    Visi. Misi sebagai strategi atau cara dan proses dalam mencapai visi. Misi Calon Kepala Desa adalah
-                    suatu cara atau strategi yang akan dilakukan untuk mendukung pencapaian Visi Calon Kepala Desa.
+                <h5 class="text-secondary"> Apa Misi Desa?</h5>
+                <p class="text-abu mt-3">Dan untuk melaksanakan visi Desa Bulak dilaksanakan misi dan program sebagai
+                    berikut:
+                <h6 class="text-secondary"> Pembangunan Jangka Panjang</h6>
+                <ul class="text-secondary">
+                    <li>Melanjutkan pembangunan desa yang belum terlaksana.</li>
+                    <li>Meningkatkan kerjasama antara pemerintah desa dengan lembaga desa yang ada.</li>
+                    <li>Meningkatkan kesejahtraan masyarakat desa dengan meningkatkan sarana dan prasarana ekonomi
+                        warga.</li>
+                </ul>
 
-                    Pengertian Misi Calon Kepala Desa menurut Permendagri Nomor 112 Tahun 2014 (Pasal 28 Ayat 3) adalah
-                    “berisi program yang akan dilaksanakan dalam rangka mewujudkan visi”.
 
-                    Maka dapat diartikan, Misi Calon Kepala Desa adalah suatu konsep perencanaan, strategi dan disertai
-                    tindakan atau program yang akan dilaksanakan untuk menjabarkan atau mewujudkan visi Calon Kepala
-                    Desa.</p>
+                <h6 class="text-secondary"> Pembangunan Jangka Pendek</h6>
+                <ul class="text-secondary">
+                    <li>Mengembangkan dan Menjaga serta melestarikan adat istiadat desa terutama yang telah mengakar di
+                        desa Bulak.</li>
+                    <li>Meningkatkan pelayanan dalam bidang pemerintahan kepada warga masyarakat</li>
+                    <li>Meningkatkan sarana dan prasarana ekonomi warga desa dengan perbaikan prasarana dan sarana
+                        ekonomi.</li>
+                    <li>Meningkatkan sarana dan prasarana pendidikan guna peningkatan sumber daya manusia Desa Bulak.
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
