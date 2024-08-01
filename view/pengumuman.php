@@ -97,8 +97,6 @@
                                 <li><a class="dropdown-item" href="../view/pengumuman.php">Pengumuman</a></li>
                                 <li><a class="dropdown-item" href="../view/agenda.php">Agenda Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="../view/galeri.php">Galeri</a></li>
-                                <li><a class="dropdown-item" href="../view/download.php">Download</a></li>
-                                <li><a class="dropdown-item" href="../view/produk.php">Produk Hukum</a></li>
                             </ul>
                         </li>
                         <li class="nav-user"><a class="nav-link"

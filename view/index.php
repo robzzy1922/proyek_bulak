@@ -101,8 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
                                 <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
-                                <li><a class="dropdown-item" href="download.php">Download</a></li>
-                                <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-user"><a class="nav-link"
@@ -198,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- end pengumuman -->
 
                 <!-- agenda -->
-                <h2><a href="../view/agenda_all.php">Agenda Kegiatan</a></h2>
+                <h2><a href="../view/agenda.php">Agenda Kegiatan</a></h2>
                 <ul class="agenda-list">
                     <?php
                     $sql = "SELECT created_at, judul, lokasi FROM agenda ORDER BY created_at DESC LIMIT 3";

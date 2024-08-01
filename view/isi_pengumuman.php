@@ -86,8 +86,6 @@ if (mysqli_num_rows($result) > 0) {
                                 <li><a class="dropdown-item" href="pengumuman.php">Pengumuman</a></li>
                                 <li><a class="dropdown-item" href="agenda.php">Agenda Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="galeri.php">Galeri</a></li>
-                                <li><a class="dropdown-item" href="download.php">Download</a></li>
-                                <li><a class="dropdown-item" href="produk.php">Produk Hukum</a></li>
                             </ul>
                         </li>
                         <li class="nav-user"><a class="nav-link"
