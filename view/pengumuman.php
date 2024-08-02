@@ -84,7 +84,6 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="../view/struktur.php">Struktur Organisasi</a></li>
                                 <li><a class="dropdown-item" href="../view/perangkat_desa.php">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="../view/lembaga.php">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -160,29 +159,7 @@
             </section>
             <!-- end pengumuman -->
 
-            <!-- pengumuman terakhir -->
-            <aside class="last_all col-md-4">
-                <h4>Pengumuman Terakhir</h4>
-                <?php
-                $sql_latest = "SELECT id, judul, created_at, image FROM pengumuman ORDER BY created_at DESC LIMIT 5";
-                $result_latest = mysqli_query($conn, $sql_latest);
 
-                if (mysqli_num_rows($result_latest) > 0) {
-                    while($row_latest = mysqli_fetch_assoc($result_latest)) {
-                        echo '<div class="latest-news mb-3 d-flex">';
-                        echo '<img src="../admin/uploads/' . $row_latest["image"] . '" class="img-fluid me-2" alt="News Image" style="width: 50px; height: 50px;">';
-                        echo '<div>';
-                        echo '<h5 style="font-size: 1rem;"> <a href="../view/isi_pengumuman.php?id=' . $row_latest["id"] . '" style="text-decoration: none;">' . $row_latest["judul"] . '</a></h5>';
-                        echo '<p><i class="fas fa-calendar-alt"></i> ' . date('M d, Y', strtotime($row_latest["created_at"])) . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                } else {
-                    echo "<p>No latest announcements found.</p>";
-                }
-                ?>
-            </aside>
-            <!-- end pengumuman terakhir -->
         </div>
     </main>
 

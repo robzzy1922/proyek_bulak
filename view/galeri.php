@@ -62,7 +62,6 @@ require '../function/koneksi.php';
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="../view/struktur.php">Struktur Organisasi</a></li>
                                 <li><a class="dropdown-item" href="../view/perangkat_desa.php">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="../view/lembaga.php">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

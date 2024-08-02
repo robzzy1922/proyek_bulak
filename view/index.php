@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="struktur.php">Struktur Organisasi</a></li>
                                 <li><a class="dropdown-item" href="perangkat_desa.php">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="lembaga.php">Lembaga Desa</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -318,6 +318,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
 
 </body>
 

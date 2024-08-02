@@ -50,7 +50,6 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="struktur.php">Struktur Organisasi</a></li>
                                 <li><a class="dropdown-item" href="perangkat_desa.php">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="lembaga.php">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

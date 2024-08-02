@@ -364,65 +364,6 @@ nav ul li ul li {
   background-color: #0056b3;
   border-color: #0056b3;
 }
-/* Loader CSS */
-.loader {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  width: 50px;
-  height: 50px;
-  border: 5px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 5px solid #3498db;
-  animation: spin 1s linear infinite;
-  z-index: 9999;
-  display: none;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Latest News */
-
-.last_all {
-  scale: 0.8;
-}
-.last_all h4 {
-  margin-top: -90px;
-  text-align: center;
-  padding-bottom: 10px;
-  text-decoration: underline;
-}
-
-.latest-news {
-  border: 1px solid #ccc; /* Tambahkan border */
-  padding: 10px; /* Tambahkan padding */
-  margin-bottom: 10px; /* Tambahkan margin bawah */
-  border-radius: 5px; /* Tambahkan border radius */
-  font-size: 0.9rem; /* Perkecil ukuran font */
-}
-
-.latest-news img {
-  width: 40px; /* Perkecil ukuran gambar */
-  height: 40px; /* Perkecil ukuran gambar */
-  margin-right: 10px; /* Tambahkan jarak antara gambar dan teks */
-}
-
-.latest-news h5 {
-  font-size: 1rem; /* Sesuaikan ukuran font */
-  margin: 0; /* Hilangkan margin */
-}
-
-.latest-news p {
-  font-size: 0.8rem; /* Perkecil ukuran font */
-  margin: 0; /* Hilangkan margin */
-}
 
 .text-abu {
   color: #777;
@@ -457,35 +398,6 @@ nav ul li ul li {
   line-height: 1.6;
   color: #333;
   margin-bottom: 20px;
-}
-
-.comment-card {
-  border: 1px solid #e3e3e3;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #f9f9f9;
-}
-.comment-card .meta {
-  font-size: 0.9em;
-  color: #6c757d;
-}
-.comment-card .meta strong {
-  color: #333;
-}
-
-/* Comments section */
-.comments-container {
-  max-height: 300px; /* Set the maximum height for the comments section */
-  overflow: hidden; /* Hide overflow content */
-  position: relative;
-}
-
-.comments {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  animation: slide 10s linear infinite; /* Adjust the duration as needed */
 }
 
 @keyframes slide {
